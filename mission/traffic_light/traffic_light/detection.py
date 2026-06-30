@@ -102,7 +102,7 @@ class TrafficLightDetection(Node):
             self.get_logger().error(f'Error decoding compressed image: {e}')
             return
         
-        src2 = self.gaussianBlur(src[240:,320:])
+        src2 = self.gaussianBlur(src)
         src_red = self.redHsvInrange(src2)
         src_green = self.greenHsvInrange(src2)
         src_red = self.componentsWithStatsFilter(src_red)
