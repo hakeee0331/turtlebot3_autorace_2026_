@@ -54,3 +54,13 @@ class ImageProcessor():
         mask = np.isin(labels, valid_labels)
         filtered = (mask * 255).astype(np.uint8)
         return filtered
+
+    @staticmethod
+    def linear_saturate(src, alpha, beta):
+        src_f = src.astype(np.float32)
+        
+        sat = src_f * alpha + beta
+        sat = np.clip(sat, 0, 255)
+        return sat.astype(np.uint8)
+
+    
