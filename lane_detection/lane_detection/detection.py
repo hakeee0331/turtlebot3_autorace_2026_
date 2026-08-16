@@ -157,7 +157,7 @@ class LaneDetection(Node):
         if self.lane_mode: config = self.LEFT_LANE_CONFIG
         else: config = self.RIGHT_LANE_CONFIG
 
-        src_detect, lane_center = self.detector.findLaneCenter(src[:, config.roi_start_x:config.roi_end_x])
+        src_detect, lane_center = self.detector.findLaneCenter(src[:, config.roi_start_x:config.roi_end_x], detect_mode='saturation')
         if lane_center == None: lane_center = config.roi_start_x    # 검출 불가시 극단값 처리
 
         detect_fail = False
